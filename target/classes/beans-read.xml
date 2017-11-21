@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="mybook" class="com.criss.read.domain.Book">
+		
+		
+		<constructor-arg index="0" value="Ulise"></constructor-arg>
+		<constructor-arg index="1" value="James Joyce"></constructor-arg>
+		
+	</bean>
+
+	<bean id="read"
+		class="com.criss.read.serviceimpl.FinishedBookServiceImpl">
+	<property name="finishD" value="25.01.2017"></property>
+	<property name="startD" value="25.12.2016"></property>
+	</bean>
+	<bean id="reader" class="com.criss.read.domain.User">
+		
+		
+		
+	<property name="userName" value="Cristina"></property>
+	</bean>
+	<bean id="finishedbook"
+		class="com.criss.read.serviceimpl.FinishedBookServiceImpl">
+	</bean>
+	<bean id="userread" class="com.criss.read.domain.UserReads">
+		<property name="user" ref="reader"></property>
+		<property name="book" ref="mybook"></property>
+		<property name="statusReadingService" ref="finishedbook"></property>
+	</bean>
+	<bean id="inprogress"
+		class="com.criss.read.serviceimpl.InProgressReadingServiceImpl">
+	</bean>
+</beans>
